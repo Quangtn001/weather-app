@@ -25,7 +25,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <div className="res container position-absolute overflow-hidden d-flex">
+        <div
+          className="res container position-absolute overflow-hidden d-flex"
+          style={{ height: "90vh" }}
+        >
           <Sidebar data={weather} onCityChange={handleOnCityChange} />
           {weather && <Detail data={weather} />}
         </div>

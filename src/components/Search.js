@@ -29,14 +29,16 @@ function Search({ onSearchChange }) {
       .catch((err) => console.error(err));
   };
   return (
-    <AsyncPaginate
-      className=""
-      placeholder="Search for city"
-      debounceTimeout={600}
-      value={search}
-      onChange={handleOnChange}
-      loadOptions={loadOptions}
-    />
+    <div className="mb-3">
+      <AsyncPaginate
+        className=""
+        placeholder="Search for city"
+        debounceTimeout={600}
+        value={search}
+        onChange={handleOnChange}
+        loadOptions={loadOptions}
+      />
+    </div>
   );
 }
 
