@@ -41,9 +41,9 @@ function Detail({ data }) {
         </div>
       </div>
       <Routes>
-        <Route path="/" element={<Today weatherData={data} />}></Route>
-        <Route path="/week" element={<Week weatherData={data} />}></Route>
-        <Route path="/hour" element={<Hour weatherData={data} />}></Route>
+        <Route path="/" element={<Today />}></Route>
+        <Route path="/week" element={<Week />}></Route>
+        <Route path="/hour" element={<Hour />}></Route>
       </Routes>
     </div>
   );

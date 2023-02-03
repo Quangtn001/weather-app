@@ -18,7 +18,12 @@ function WeekItem({ dt, tempMin, tempMax, icon, idx, onDaySelect, currIdx }) {
         >
           <p className="fs-6 text-black-50">{dateFormat(dt)}</p>
           <div className="text-center">
-            <img className="img-fluid" alt="icon" src={`icons/${icon}.png`} />
+            <img
+              className="img-fluid"
+              alt="icon"
+              src={`icons/${icon}.png`}
+              style={{ width: "40px" }}
+            />
             <div className="fs-6 text-muted fw-bold">
               {Math.floor(tempMin)}°C - {Math.floor(tempMax)}°C
             </div>

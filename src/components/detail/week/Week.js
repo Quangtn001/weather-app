@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import WeekItem from "./WeekItem";
 import WeekItemDesc from "./WeekItemDesc";
+import { useSelector } from "react-redux";
 
-function Week({ weatherData }) {
+function Week() {
+  const weather = useSelector((state) => state?.weathers.weather?.[0]?.daily);
   const [itemIndex, setItemIndex] = useState(0);
   function handleOnDaySelect(index) {
     setItemIndex(index);
@@ -11,11 +13,11 @@ function Week({ weatherData }) {
     <>
       <div className="row cursor-pointer">
         <div className="d-flex flex-wrap">
-          {weatherData.daily.map((item, index) => (
+          {weather?.map((item, index) => (
             <WeekItem
               key={index}
               dt={item.dt}
-              icon={item.weather[0].icon}
+              icon={item?.weather[0]?.icon}
               tempMin={item.temp.min}
               tempMax={item.temp.max}
               idx={index}
@@ -25,7 +27,7 @@ function Week({ weatherData }) {
           ))}
         </div>
       </div>
-      <WeekItemDesc data={weatherData.daily[itemIndex]} />
+      <WeekItemDesc data={weather[itemIndex]} />
     </>
   );
 }

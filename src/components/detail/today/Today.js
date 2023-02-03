@@ -1,6 +1,8 @@
 import React from "react";
 import { kmFormat, timeFormat } from "../../../plugins/Format";
-function Today({ weatherData }) {
+import { useSelector } from "react-redux";
+function Today() {
+  const weather = useSelector((state) => state?.weathers.weather?.[0]?.current);
   return (
     <div className="row">
       <div className="d-flex flex-wrap">
@@ -11,12 +13,10 @@ function Today({ weatherData }) {
               <img
                 src="/svg/uv index.svg"
                 alt=""
-                className="img-thumbnail"
+                className="img-fluid"
                 style={{ width: "30px" }}
               />
-              <p className="fs-3 text-muted fw-bold">
-                {weatherData.current.uvi}
-              </p>
+              <p className="fs-3 text-muted fw-bold">{weather?.uvi}</p>
             </div>
           </div>
         </div>
@@ -28,11 +28,11 @@ function Today({ weatherData }) {
               <img
                 src="/svg/wind.svg"
                 alt=""
-                className="img-thumbnail"
+                className="img-fluid"
                 style={{ width: "30px" }}
               />
               <p className="fs-3 text-muted fw-bold">
-                {weatherData.current.wind_speed} km/h
+                {weather?.wind_speed}km/h
               </p>
             </div>
           </div>
@@ -41,23 +41,23 @@ function Today({ weatherData }) {
         <div className="  col-md-6 col-xl-4  col-sm-12 p-3">
           <div className="bg-white p-2 rounded-3 h-100">
             <p className="fs-5 text-black-50">Sunrise &amp; Sunset</p>
-            <p className="fs-4 text-muted fw-bold ">
+            <p className="fs-4 text-muted fw-bold d-flex align-items-center">
               <img
                 src="/svg/sunrise.svg"
                 alt=""
-                className="img-thumbnail"
-                style={{ width: "30px" }}
+                className="img-fluid"
+                style={{ width: "30px", marginRight: "10px" }}
               />
-              {timeFormat(weatherData.current.sunrise)};
+              {timeFormat(weather?.sunrise)};
             </p>
-            <p className="fs-4 text-muted fw-bold">
+            <p className="fs-4 text-muted fw-bold d-flex align-items-center">
               <img
                 src="/svg/sunset.svg"
                 alt=""
-                className="img-thumbnail"
-                style={{ width: "30px" }}
+                className="img-fluid"
+                style={{ width: "30px", marginRight: "10px" }}
               />
-              {timeFormat(weatherData.current.sunset)}
+              {timeFormat(weather?.sunset)}
             </p>
           </div>
         </div>
@@ -69,12 +69,10 @@ function Today({ weatherData }) {
               <img
                 src="/svg/humidity.svg"
                 alt=""
-                className="img-thumbnail"
+                className="img-fluid"
                 style={{ width: "30px" }}
               />
-              <p className="fs-3 text-muted fw-bold">
-                {weatherData.current.humidity}%
-              </p>
+              <p className="fs-3 text-muted fw-bold">{weather?.humidity}%</p>
             </div>
           </div>
         </div>
@@ -86,11 +84,11 @@ function Today({ weatherData }) {
               <img
                 src="/svg/visibility.svg"
                 alt=""
-                className="img-thumbnail"
+                className="img-fluid"
                 style={{ width: "30px" }}
               />
               <p className="fs-3 text-muted fw-bold">
-                {kmFormat(weatherData.current.visibility)}
+                {kmFormat(weather?.visibility)}
               </p>
             </div>
           </div>
@@ -103,12 +101,10 @@ function Today({ weatherData }) {
               <img
                 src="/svg/pressure.svg"
                 alt=""
-                className="img-thumbnail"
+                className="img-fluid"
                 style={{ width: "30px" }}
               />
-              <p className="fs-3 text-muted fw-bold">
-                {weatherData.current.pressure} hPa
-              </p>
+              <p className="fs-3 text-muted fw-bold">{weather?.pressure} hPa</p>
             </div>
           </div>
         </div>
